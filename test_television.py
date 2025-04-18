@@ -13,6 +13,13 @@ def test_power():
     tv.power()
     assert "Power - False" in str(tv)
 
+    tv.mute()  # TV is off
+    assert str(tv) == "Power - False, Channel - 0, Volume - 0"
+
+    tv.mute()  # Still off
+    tv.mute()  # Try to unmute while still off
+    assert str(tv) == "Power - False, Channel - 0, Volume - 0"
+
 
 def test_mute_and_unmute():
     tv = Television()
